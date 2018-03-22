@@ -1,0 +1,52 @@
+<form #detailsForm="ngForm" class="editForm" novalidate>
+    <div class="tab-pane fade in active">
+        <h4 class="head text-center">{{title}}</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="appType">Application Type</label>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" #appType="ngModel" required name="appType" [(ngModel)]="details.appType" value="New Construction"> New Construction
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" #appType="ngModel" required name="appType" [(ngModel)]="details.appType" value="Modernization"> Modernization
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="trackingNumber">Project Tracking Number</label>
+                            <input class="form-control input-md" #trackingNumber="ngModel" required id="trackingNumber" name="trackingNumber" type="text"
+                                placeholder="Project Tracking Number" pattern="^(0|[1-9][0-9]*)$"  [(ngModel)]="details.trackingNumber">
+                            <div class="alert alert-danger" [hidden]="trackingNumber.valid">Project Tracking Number is required and must be numeric</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="highSchoolAttendanceArea">High School Attendance Area</label>
+                    <select class="form-control input-md" #highSchoolAttendanceArea="ngModel" placeholder="Project Tracking Number" required id="highSchoolAttendanceArea" name="highSchoolAttendanceArea" [(ngModel)]="details.highSchoolAttendanceArea">
+                        <option value="" selected disabled hidden>Select HSAA</option>
+                        <option value="District-Wide">District Wide</option>
+                        <option value="Alameda">Alameda High School</option>
+                        <option value="Encinal">Encinal</option>
+                    </select>
+                    <div class="alert alert-danger" [hidden]="highSchoolAttendanceArea.valid">High School Attendance Area is required</div>
+                </div>
+
+                <div class="form-group text-center">
+                    <button class="btn btn-success btn-outline-rounded btn-info" [disabled]="!detailsForm.valid" (click)="goToNext(detailsForm)">
+                        Next
+                        <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

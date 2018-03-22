@@ -1,0 +1,32 @@
+
+<form #startForm="ngForm" class="editForm" novalidate>
+  <div class="tab-pane fade in active">
+      <h4 class="head text-center">SAB 50-10 CTEFP Form <span *ngIf="start.applicationName">- {{start.applicationName}}</span></h4>
+      <br/>
+      <div class='row'>
+          <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+              <div class="row">
+                  <div class='col-xs-12'>
+                    <p>
+                      A School District or Joint Powers Authority may enter the information required for the Application for Career Technical Education
+                      Facilities Funding (Form SAB 50-10) using this online system. Upon completion of the required information, the completed
+                      Form SAB 50-10 can be generated and printed. asdfasdf
+                    </p>
+                  </div>
+                  <div class='col-xs-12'>
+                      <div class="form-group">
+                            <label class="control-label" for="applicationName">Application Name</label>
+                            <input class="form-control input-md" #applicationName="ngModel" required id="applicationName" name="applicationName" type="text"
+                                placeholder="Application Name"  [(ngModel)]="start.applicationName">
+                            <div class="alert alert-danger" [hidden]="applicationName.valid">Application Name is Required</div>
+                        </div>
+                  </div>
+              </div>
+                  
+              <div class="form-group text-center">
+                  <button class="btn btn-success btn-outline-rounded btn-info" (click)="goToNext(startForm)"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button>
+              </div>
+          </div>
+      </div>
+  </div>
+</form>
